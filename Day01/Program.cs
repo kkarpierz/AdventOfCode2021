@@ -1,4 +1,5 @@
 ﻿//  Advent of code 2021
+// https://adventofcode.com/2021/day/1
 //  Karol Karpierz solution code
 
 
@@ -7,16 +8,33 @@ string input = "143,147,150,166,180,187,188,185,199,198,199,197,218,221,238,239,
 String[] strlist = input.Split(',');
 int[] myInput = Array.ConvertAll(strlist, int.Parse);
 
+// part1 
+
 int count = 0;
 
 for (int i = 1; i < myInput.Length; ++i)
 {
 	if (myInput[i - 1] < myInput[i])
-	{
 		++count;
-	}
+
 	// Write on Console to see operations
 	// Console.WriteLine("Curr: " + myInput[i] + ", count: " + count);
 }
 
 Console.WriteLine("\n\nResult: " + count);
+
+
+// part2
+
+int count2 = 0;
+
+for (int i = 3; i < myInput.Length; ++i)
+{
+	if ((myInput[i-2] + myInput[i - 1] + myInput[i]) > (myInput[i - 3] + myInput[i - 2] + myInput[i - 1]))
+		++count2;
+
+	// write on console to see operations
+	// Console.WriteLine("c=" + count2 + " | " + myInput[i - 2] + " + " + myInput[i - 1] + " + " + myInput[i] + " ?> " + myInput[i - 3] + " + " + myInput[i - 2] + " + " + myInput[i - 1]);
+}
+
+Console.WriteLine("\n\nResult part2: " + count2);
